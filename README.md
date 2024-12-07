@@ -109,7 +109,3 @@ char *line2 = get_next_line(fd2);
 
 This project is licensed under the MIT License.
 
----
-
-Feel free to modify or extend the code as needed for your particular use case!
-```
