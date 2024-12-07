@@ -83,7 +83,6 @@ int main(void)
 - **Undefined Behaviors**:
   - If the file descriptor changes between calls and `read` has not reached the end of the file.
   - When reading binary files (though you can handle this behavior logically).
-- **Testing**: The code should function correctly with varying buffer sizes, including edge cases.
 
 ---
 
