@@ -26,24 +26,34 @@ The `get_next_line` project implements a function that reads and returns a singl
 
 ```c
 char *get_next_line(int fd);
-Parameters
-fd: The file descriptor to read from.
-Return Value
-char *: The next line read from the file, including the \n if applicable.
-NULL: If there is nothing left to read or an error occurs.
-Compilation Instructions
-To compile the code, use the following command, substituting BUFFER_SIZE with the desired size (e.g., 42):
+```
 
-bash
-Copy code
+### Parameters
+- **`fd`**: The file descriptor to read from.
+
+### Return Value
+- **`char *`**: The next line read from the file, including the `\n` if applicable.
+- **`NULL`**: If there is nothing left to read or an error occurs.
+
+---
+
+## Compilation Instructions
+
+To compile the code, use the following command, substituting `BUFFER_SIZE` with the desired size (e.g., 42):
+
+```bash
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
-You can also omit the -D BUFFER_SIZE flag to use the default buffer size defined in your code.
+```
 
-Usage Example
-Here’s an example of using get_next_line to read lines from a file:
+You can also omit the `-D BUFFER_SIZE` flag to use the default buffer size defined in your code.
 
-c
-Copy code
+---
+
+## Usage Example
+
+Here’s an example of using `get_next_line` to read lines from a file:
+
+```c
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -63,17 +73,34 @@ int main(void)
     close(fd);
     return (0);
 }
-Key Considerations
-Buffer Size Flexibility: The buffer size is defined at compile time with the BUFFER_SIZE macro, which affects the behavior of the read function.
-Undefined Behaviors:
-If the file descriptor changes between calls and read has not reached the end of the file.
-When reading binary files (though you can handle this behavior logically).
-Testing: The code should function correctly with varying buffer sizes, including edge cases.
-Learnings and Reflections
+```
+
+---
+
+## Key Considerations
+
+- **Buffer Size Flexibility**: The buffer size is defined at compile time with the `BUFFER_SIZE` macro, which affects the behavior of the `read` function.
+- **Undefined Behaviors**:
+  - If the file descriptor changes between calls and `read` has not reached the end of the file.
+  - When reading binary files (though you can handle this behavior logically).
+- **Testing**: The code should function correctly with varying buffer sizes, including edge cases.
+
+---
+
+## Learnings and Reflections
+
 This project deepened my understanding of:
+- **Dynamic Memory Management**: Efficiently allocating and freeing memory for varying line lengths.
+- **File I/O Operations**: Managing file descriptors and ensuring robust behavior for reading files.
+- **Error Handling**: Identifying and handling edge cases and system-level errors gracefully.
 
-Dynamic Memory Management: Efficiently allocating and freeing memory for varying line lengths.
-File I/O Operations: Managing file descriptors and ensuring robust behavior for reading files.
-Error Handling: Identifying and handling edge cases and system-level errors gracefully.
-By implementing get_next_line, I have built a versatile and reusable function that serves as a cornerstone for more complex input-handling programs.
+By implementing `get_next_line`, I have built a versatile and reusable function that serves as a cornerstone for more complex input-handling programs.
 
+---
+
+## License
+
+This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
+```
+
+This README provides a comprehensive overview of the project while keeping it concise and easy to understand. Let me know if you need further adjustments!
