@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pximenez <pximenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:49:13 by pximenez          #+#    #+#             */
-/*   Updated: 2024/01/12 12:37:35 by pximenez         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:52:42 by pximenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_save_rest_static(char *static_var_in, char *line)
 {
@@ -119,23 +119,23 @@ char	*ft_add_to_static(int fd, char *static_var_in)
 
 char	*get_next_line(int fd)
 {
-	static char	*static_var;
+	static char	*static_var[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (static_var != NULL)
+	if (static_var[fd] != NULL)
 	{
-		if (ft_strchr(static_var, '\n') == 1)
+		if (ft_strchr(static_var[fd], '\n') == 1)
 		{
-			line = ft_save_line(static_var);
-			static_var = ft_save_rest_static(static_var, line);
+			line = ft_save_line(static_var[fd]);
+			static_var[fd] = ft_save_rest_static(static_var[fd], line);
 			return (line);
 		}
 	}
-	static_var = ft_add_to_static(fd, static_var);
-	line = ft_save_line(static_var);
-	static_var = ft_save_rest_static(static_var, line);
+	static_var[fd] = ft_add_to_static(fd, static_var[fd]);
+	line = ft_save_line(static_var[fd]);
+	static_var[fd] = ft_save_rest_static(static_var[fd], line);
 	return (line);
 }
 
