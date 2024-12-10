@@ -105,7 +105,15 @@ char *line2 = get_next_line(fd2);
 // Process lines from different files
 ```
 
-## License
+Here’s a more condensed version of the **Learnings** section for your project:
 
-This project is licensed under the MIT License.
+---
 
+## Learnings
+
+This project provided valuable insights into:
+
+- **File Handling**: Managing file descriptors and using the `read()` system call effectively.  
+- **Memory Management**: Dynamically allocating and freeing memory while avoiding leaks.  
+- **State Preservation**: Using static variables to maintain state across function calls.  
+- **Multi-FD Handling**: Managing multiple file descriptors simultaneously in the bonus part.  
